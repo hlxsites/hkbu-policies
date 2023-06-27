@@ -48,7 +48,7 @@
 
   /* fonts */
   --heading-font-family: "Open Sans";
-  --body-font-family: var(--body-font-family);
+  --body-font-family: var(--heading-font-family);
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
 
   /* colors */
