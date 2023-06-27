@@ -10,7 +10,31 @@
  * governing permissions and limitations under the License.
  */
 
- :root {
+/* fallback font for Ionicons (normal - 400) */
+@font-face {
+  font-family: "ionicons-normal-400-fallback";
+  /* stylelint-disable-next-line property-no-unknown */
+  size-adjust: 91.379%;
+  src: local("Arial");
+}
+
+/* fallback font for FontAwesome (normal - 400) */
+@font-face {
+  font-family: "fontawesome-normal-400-fallback";
+  /* stylelint-disable-next-line property-no-unknown */
+  size-adjust: 91.379%;
+  src: local("Arial");
+}
+
+/* fallback font for Open Sans (normal - 400) */
+@font-face {
+  font-family: "open-sans-normal-400-fallback";
+  /* stylelint-disable-next-line property-no-unknown */
+  size-adjust: 104.7%;
+  src: local("Arial");
+}
+
+:root {
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
@@ -19,27 +43,34 @@
   --highlight-background-color: #ccc;
   --text-color: #000;
 
-  /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
-  --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 16px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
-
   /* nav height */
   --nav-height: 64px;
 
+  /* fonts */
+  --heading-font-family: "Open Sans";
+  --body-font-family: var(--body-font-family);
+  --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
+
+  /* colors */
+  --text-color: #00000080;
+  --link-color: #007bff;
+  --link-hover-color: #007bff;
+  --background-color: #fff;
+  --overlay-background-color: #eee;
+  --highlight-background-color: #ccc;
+  --nav-background: #f3f4f3;
+  --links-color: rgba(0 0 0 0.6);
+
+  /* sizes */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 16px;
+  --body-font-size-l: 20px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 13px;
 }
 
 @media (min-width: 900px) {
@@ -71,24 +102,34 @@ header {
   height: var(--nav-height);
 }
 
-h1, h2, h3,
-h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
+  /* stylelint-disable-next-line property-no-unknown */
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
-h4 { font-size: var(--heading-font-size-m) }
-h5 { font-size: var(--heading-font-size-s) }
-h6 { font-size: var(--heading-font-size-xs) }
+h1 { font-size: var(--heading-font-size-xxl); }
+h2 { font-size: var(--heading-font-size-xl); }
+h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); }
+h5 { font-size: var(--heading-font-size-s); }
+h6 { font-size: var(--heading-font-size-xs); }
 
-p, dl, ol, ul, pre, blockquote {
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -100,13 +141,16 @@ hr {
   border-bottom: 1px solid var(--overlay-background-color);
 }
 
-code, pre, samp {
+code,
+pre,
+samp {
   font-family: var(--fixed-font-family);
   font-size: var(--body-font-size-s);
 }
 
-code, samp {
-  padding: .125em;
+code,
+samp {
+  padding: 0.125em;
 }
 
 pre {
@@ -116,7 +160,7 @@ pre {
 main pre {
   background-color: var(--overlay-background-color);
   padding: 1em;
-  border-radius: .25em;
+  border-radius: 0.25em;
   overflow-x: auto;
   white-space: pre;
 }
@@ -132,7 +176,8 @@ a:hover {
 }
 
 /* buttons */
-a.button:any-link, button {
+a.button:any-link,
+button {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
@@ -152,20 +197,25 @@ a.button:any-link, button {
   border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
+a.button:hover,
+a.button:focus,
+button:hover,
+button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
 }
 
-button:disabled, button:disabled:hover {
+button:disabled,
+button:disabled:hover {
   background-color: var(--overlay-background-color);
   cursor: unset;
 }
 
-a.button.secondary, button.secondary {
+a.button.secondary,
+button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 main input {
@@ -222,6 +272,12 @@ main img {
 
 main .section {
   padding: 64px 16px;
+}
+
+main .section .default-content-wrapper .button-container a {
+  border: none;
+  background: none;
+  color: var(--links-color);
 }
 
 @media (min-width: 600px) {
