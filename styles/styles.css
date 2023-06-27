@@ -35,14 +35,6 @@
 }
 
 :root {
-  /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
-  --background-color: #fff;
-  --overlay-background-color: #eee;
-  --highlight-background-color: #ccc;
-  --text-color: #000;
-
   /* nav height */
   --nav-height: 64px;
 
@@ -59,7 +51,7 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --nav-background: #f3f4f3;
-  --links-color: rgba(0 0 0 0.6);
+  --links-color: rgba(0 0 0 60%);
 
   /* sizes */
   --heading-font-size-xxl: 40px;
