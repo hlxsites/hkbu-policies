@@ -1,7 +1,8 @@
 footer {
-  padding: 2rem;
-  background-color: var(--overlay-background-color);
+  padding: 1em;
+  background-color: var(--footer-background);
   font-size: var(--body-font-size-s);
+  text-align: center;
 }
 
 footer .footer {
