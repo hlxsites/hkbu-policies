@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# HKBU
+HKBU on Franklin
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--hkbu-policies--hlxsites.hlx.page/
+- Live: https://main--hkbu-policies--hlxsites.hlx.live/
 
 ## Installation
 
