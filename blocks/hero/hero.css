@@ -1,7 +1,29 @@
-.hero.block {
-  padding-top: var(--nav-height);
+.section.hero-container {
+  padding: 0;
+  grid-area: image;
+  background: transparent;
+}
+
+main .section > div.hero-wrapper {
+  max-width: unset;
+}
+
+.hero-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: rgb(42 101 253);
   background: linear-gradient(270deg, rgb(42 101 253 / 100%) 0%, rgb(19 23 156 / 100%) 100%);
+}
+
+.hero.block {
+  padding-top: var(--nav-height);
+  background: transparent;
   position: relative;
 }
 
@@ -20,12 +42,6 @@
   padding-right: 16px;
   position: relative;
   z-index: 1;
-}
-
-.section.hero-container {
-  margin: 0;
-  padding: 0;
-  grid-area: image;
 }
 
 .hero.block > div > div .hero-image {
@@ -102,5 +118,17 @@
 
   .hero.block .bu-logo.deco-bu {
     display: none;
+  }
+}
+
+@media (min-width: 1124px) {
+  .hero.block > div > div .hero-image {
+    max-height: 350px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero.block > div > div .hero-image {
+    max-height: 500px;
   }
 }

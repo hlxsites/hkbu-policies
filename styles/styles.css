@@ -222,6 +222,7 @@ main img {
 
 main .section {
   padding: 64px 16px;
+  background: white;
 }
 
 @media (min-width: 600px) {
@@ -230,10 +231,19 @@ main .section {
   }
 }
 
-@media (min-width: 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
+@media (min-width: 1024px) {
+  main .section {
+    margin-left: 250px;
+  }
+
+  main .section > div {
+    max-width: 1114px;
+  }
+}
+
+@media (min-width: 1646px) {
+  main .section {
+    margin-left: calc(calc(100vw - 1146px) / 2);
   }
 }
 

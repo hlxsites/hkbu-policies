@@ -1,6 +1,10 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
 export default function decorate(block) {
+  const background = document.createElement('div');
+  background.classList.add('hero-background');
+  block.append(background);
+
   block.querySelector('img').classList.add('hero-image');
 
   ['deco-bu', 'deco-bu-dark'].forEach((logoName) => {
