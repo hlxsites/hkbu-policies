@@ -38,8 +38,8 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 45px;
-
+  --nav-height: 60px;
+  --nav-width: 250px;
 }
 
 @media (min-width: 900px) {
@@ -233,7 +233,7 @@ main .section {
 
 @media (min-width: 1024px) {
   main .section {
-    margin-left: 250px;
+    margin-left: var(--nav-width);
   }
 
   main .section > div {
@@ -242,8 +242,8 @@ main .section {
 }
 
 @media (min-width: 1646px) {
-  main .section {
-    margin-left: calc(calc(100vw - 1146px) / 2);
+  :root {
+    --nav-width: calc(calc(100vw - 1146px) / 2);
   }
 }
 

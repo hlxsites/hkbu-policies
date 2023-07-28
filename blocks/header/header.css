@@ -1,0 +1,53 @@
+nav .nav-sections {
+  display: none;
+}
+
+nav {
+  position: absolute;
+  height: var(--nav-height);
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .nav-logo .icon {
+  height: 100%;
+  width: auto;
+  display: flex;
+}
+
+nav .nav-search .icon {
+  fill: white;
+  padding-right: 5px;
+}
+
+nav .nav-hamburger {
+  height: 2px;
+  background: white;
+  width: 25px;
+  position: relative;
+}
+
+nav .nav-hamburger::before {
+  content: ' ';
+  display: block;
+  height: 2px;
+  background: white;
+  width: 30px;
+  position: absolute;
+  bottom: 7px;
+}
+
+nav .nav-hamburger::after {
+  content: ' ';
+  display: block;
+  height: 2px;
+  background: white;
+  width: 20px;
+  position: absolute;
+  bottom: -7px;
+}
