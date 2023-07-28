@@ -16,7 +16,7 @@
   font-weight: 800;
   grid-area: title;
   margin: 0 16px;
-  font-size: 4.6rem;
+  font-size: 2.8rem;
   padding-right: 16px;
   position: relative;
   z-index: 1;
@@ -28,7 +28,7 @@
   grid-area: image;
 }
 
-.hero.block > div > div img {
+.hero.block > div > div .hero-image {
   margin-top: 5px;
   max-height: 250px;
   width: 100%;
@@ -36,6 +36,7 @@
   padding-left: 16px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .hero.block > div > div::after {
@@ -56,4 +57,50 @@
   width: 120px;
   height: 80px;
   z-index: 0;
+}
+
+.hero.block .bu-logo.deco-bu-dark {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero.block > div > div {
+    display: grid;
+    grid-template: 'title image' / 4fr 6fr;
+    position: relative;
+  }
+
+  .hero.block > div > div::after {
+    height: 24px;
+  }
+
+  .hero.block > div > div .hero-image {
+    max-height: 300px;
+    position: relative;
+    top: 25px;
+    padding-left: 0;
+  }
+
+  .hero.block h1 {
+    align-self: center;
+    padding: 0 40px;
+    font-size: 4.6rem;
+  }
+
+  .hero.block .bu-logo {
+    bottom: 24px;
+    right: 0;
+    width: 60%;
+  }
+
+  .hero.block .bu-logo.deco-bu-dark {
+    grid-area: title;
+    display: flex;
+    width: 60%;
+    height: unset;
+  }
+
+  .hero.block .bu-logo.deco-bu {
+    display: none;
+  }
 }
