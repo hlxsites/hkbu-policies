@@ -85,7 +85,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+  // loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   sampleRUM('lazy');
@@ -107,6 +107,10 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+}
+
+export function fragment(content) {
+  return document.createRange().createContextualFragment(content);
 }
 
 loadPage();
