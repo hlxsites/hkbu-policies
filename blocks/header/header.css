@@ -10,6 +10,13 @@ nav {
   align-items: center;
 }
 
+nav .nav-sidebar-background {
+  display: none;
+  background: white;
+  z-index: -1;
+  transition: width 250ms;
+}
+
 nav .nav-sections {
   position: relative;
   display: none;
@@ -17,6 +24,10 @@ nav .nav-sections {
 
 nav .nav-toolbar {
   display: none;
+  grid-area: toolbar;
+  gap: 16px;
+  justify-content: end;
+  padding: 16px;
 }
 
 nav .nav-close-background {
@@ -176,11 +187,7 @@ nav[aria-expanded] .nav-sections {
 }
 
 nav[aria-expanded] .nav-toolbar {
-  grid-area: toolbar;
   display: flex;
-  gap: 16px;
-  justify-content: end;
-  padding: 16px;
 }
 
 nav[aria-expanded] .nav-toolbar .icon {
@@ -219,5 +226,124 @@ nav[aria-expanded] {
 @media (min-width: 768px) {
   nav[aria-expanded] {
     width: 70vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template: 'logo' auto 'sections' 1fr 'toolbar' auto;
+    transition: 250ms;
+  }
+
+  nav .nav-hamburger {
+    display: none;
+  }
+
+  nav .nav-search {
+    display: none;
+  }
+
+  nav .nav-sections {
+    display: flex;
+    width: var(--nav-width);
+  }
+
+  nav .nav-toolbar {
+    display: flex;
+    justify-content: start;
+    fill: white;
+  }
+
+  nav .nav-logo {
+    padding: 20px;
+    height: 50px;
+    grid-area: logo;
+  }
+
+  nav .nav-sections ul li {
+    border: none !important;
+  }
+
+  nav .nav-sections ul li .icon-chevron-down {
+    display: none !important;
+  }
+
+  nav .nav-sections ul li a:any-link {
+    color: white;
+  }
+
+  nav.has-scrolled {
+    width: 60px;
+    overflow: hidden;
+    grid-template: 'logo' auto 'hamburger' 1fr 'toolbar' auto / 60px;
+  }
+
+  nav .nav-sidebar-background {
+    width: 0;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  nav.has-scrolled .nav-sidebar-background {
+    width: 60px;
+  }
+
+  nav.has-scrolled .nav-logo .icon.icon-logo-small {
+    display: block;
+  }
+
+  nav.has-scrolled .nav-logo .icon.icon-logo-white {
+    display: none;
+  }
+
+  nav.has-scrolled .nav-sections {
+    display: none;
+  }
+
+  nav.has-scrolled .nav-hamburger {
+    grid-area: hamburger;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  nav.has-scrolled .nav-logo {
+    padding: 25px 10px 10px;
+    height: 50px;
+  }
+
+  nav.has-scrolled .nav-toolbar {
+    flex-direction: column;
+    fill: black;
+    grid-area: toolbar;
+  }
+
+  nav.has-scrolled:hover {
+    grid-template: 'logo' auto 'hamburger' 1fr 'toolbar' auto / 250px;
+    width: var(--nav-width);
+  }
+
+  nav.has-scrolled:hover .nav-sidebar-background {
+    width: var(--nav-width);
+  }
+
+  nav .nav-hamburger .burger {
+    background: black;
+  }
+
+  nav .nav-hamburger .burger::before {
+    background: black;
+  }
+
+  nav .nav-hamburger .burger::after {
+    background: black;
   }
 }

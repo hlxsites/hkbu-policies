@@ -11,6 +11,15 @@ function toggleSubmenu(li) {
   li.toggleAttribute('aria-expanded');
 }
 
+function toggleHasScrolled(block) {
+  const nav = block.querySelector('nav');
+  if (window.scrollY > 0 && !nav.classList.contains('has-scrolled')) {
+    block.querySelector('nav').classList.add('has-scrolled');
+  } else if (window.scrollY <= 0 && nav.classList.contains('has-scrolled')) {
+    block.querySelector('nav').classList.remove('has-scrolled');
+  }
+}
+
 function setupMobileEventListeners(block) {
   block.querySelector('.nav-hamburger').addEventListener('click', () => toggleMenu(block));
   block.querySelectorAll('.nav-sections > ul > li > ul').forEach((ul) => {
@@ -22,7 +31,7 @@ function setupMobileEventListeners(block) {
 }
 
 function setupDesktopEventListeners(block) {
-
+  document.addEventListener('scroll', () => toggleHasScrolled(block));
 }
 
 export default async function decorate(block) {
@@ -45,16 +54,19 @@ export default async function decorate(block) {
     nav.prepend(fragment(`
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
-      <div class='nav-logo'>
-        <span class="icon icon-logo-white"></span>
-        <span class="icon icon-logo-small"></span>
-      </div>
       <div class="nav-search"><span class="icon icon-search"></span></div>
       <div class="nav-toolbar">
         <span class="icon icon-font-size"></span>
         <span class="icon icon-language"></span>
         <span class="icon icon-search"></span>
       </div>
+    `));
+    nav.append(fragment(`
+      <div class='nav-logo'>
+        <span class="icon icon-logo-white"></span>
+        <span class="icon icon-logo-small"></span>
+      </div>
+      <div class="nav-sidebar-background"></div>
     `));
 
     // add chevrons to lis with submenu or lis in sub menu with link
