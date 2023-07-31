@@ -32,6 +32,13 @@ function setupMobileEventListeners(block) {
 
 function setupDesktopEventListeners(block) {
   document.addEventListener('scroll', () => toggleHasScrolled(block));
+
+  block.querySelectorAll('.nav-sections, .nav-toolbar, .nav-hamburger').forEach((section) => {
+    section.addEventListener('mouseenter', () => block.querySelector('nav').setAttribute('data-hovering', ''));
+  });
+  block.querySelector('.nav-close-background').addEventListener('mouseenter', () => {
+    block.querySelector('nav').removeAttribute('data-hovering');
+  });
 }
 
 export default async function decorate(block) {
@@ -54,6 +61,10 @@ export default async function decorate(block) {
     nav.prepend(fragment(`
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
+      <div class='nav-logo'>
+        <span class="icon icon-logo-white"></span>
+        <span class="icon icon-logo-small"></span>
+      </div>
       <div class="nav-search"><span class="icon icon-search"></span></div>
       <div class="nav-toolbar">
         <span class="icon icon-font-size"></span>
@@ -62,10 +73,6 @@ export default async function decorate(block) {
       </div>
     `));
     nav.append(fragment(`
-      <div class='nav-logo'>
-        <span class="icon icon-logo-white"></span>
-        <span class="icon icon-logo-small"></span>
-      </div>
       <div class="nav-sidebar-background"></div>
     `));
 
