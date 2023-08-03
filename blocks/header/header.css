@@ -17,6 +17,20 @@ nav .nav-sidebar-background {
   transition: width 250ms;
 }
 
+nav .nav-search-overlay {
+  display: none;
+}
+
+nav .nav-search-overlay[visible] {
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 123, 255, 0.32);
+}
+
 nav .nav-sections {
   position: relative;
   display: none;

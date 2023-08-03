@@ -58,6 +58,12 @@ function setupSharedEventListeners(block) {
       document.querySelector('html').style.fontSize = `${sizes[i]}px`;
     });
   });
+  // Add search overlay toggle
+  block.querySelectorAll('.icon-search').forEach((searchIcon) => {
+    searchIcon.addEventListener('click', () => {
+      block.querySelector('.nav-search-overlay').toggleAttribute('visible');
+    });
+  });
 }
 
 // Adds event listeners that are used only on mobile
@@ -114,7 +120,8 @@ export default async function decorate(block) {
     nav.innerHTML = html;
 
     // Add different sections to nav
-    nav.querySelector(':scope > div').className = 'nav-sections';
+    nav.querySelector(':scope > div:first-child').className = 'nav-sections';
+    nav.querySelector(':scope > div:nth-child(2)').className = 'nav-search-overlay';
     nav.prepend(fragment(`
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
@@ -166,6 +173,9 @@ export default async function decorate(block) {
     } else {
       setupMobileEventListeners(block);
     }
+
+    // initially check if the page loaded at an offset
+    toggleHasScrolled(block);
   }
 }
 
