@@ -3,14 +3,23 @@ import { fragment } from '../../scripts/scripts.js';
 
 const isDesktop = window.matchMedia('(min-width: 1024px)');
 
+// Opens/closes mobile menu
 function toggleMenu(block) {
   block.querySelector('nav').toggleAttribute('aria-expanded');
 }
 
+// Opens/closes sub-menu
 function toggleSubmenu(li) {
   li.toggleAttribute('aria-expanded');
 }
 
+function closeAllSubmenus(block) {
+  block.querySelectorAll('.nav-sections li[aria-expanded]').forEach((section) => {
+    section.removeAttribute('aria-expanded');
+  });
+}
+
+// Adds the appropriate class name if the user has scrolled on the page
 function toggleHasScrolled(block) {
   const nav = block.querySelector('nav');
   if (window.scrollY > 0 && !nav.classList.contains('has-scrolled')) {
@@ -20,13 +29,16 @@ function toggleHasScrolled(block) {
   }
 }
 
+// Closes the open toolbars (language selector/font size)
 function closeAllExpandedTools(block) {
   block.querySelectorAll('.nav-toolbar [expanded]').forEach((element) => {
     element.removeAttribute('expanded');
   });
 }
 
+// Adds event listeners that are shared between mobile and desktop
 function setupSharedEventListeners(block) {
+  // Open/close language selector and font size tool
   block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
     tool.addEventListener('click', () => {
       if (tool.hasAttribute('expanded')) {
@@ -37,6 +49,7 @@ function setupSharedEventListeners(block) {
       }
     });
   });
+  // Implements font size tool
   block.querySelectorAll('.icon-font-size ~ .tool-dropdown-content > span').forEach((fontSizeButton, i) => {
     const sizes = [9, 10, 11];
     fontSizeButton.addEventListener('click', () => {
@@ -47,26 +60,40 @@ function setupSharedEventListeners(block) {
   });
 }
 
+// Adds event listeners that are used only on mobile
 function setupMobileEventListeners(block) {
+  // open menu on hamburger click
   block.querySelector('.nav-hamburger').addEventListener('click', () => toggleMenu(block));
+  // close menu on click outside of menu
+  block.querySelector('.nav-close-background').addEventListener('click', () => toggleMenu(block));
+  // open/close sub-menu
   block.querySelectorAll('.nav-sections > ul > li > ul').forEach((ul) => {
     const parent = ul.parentElement;
     parent.querySelector(':scope > .icon-chevron-down')
       .addEventListener('click', () => toggleSubmenu(parent));
   });
-  block.querySelector('.nav-close-background').addEventListener('click', () => toggleMenu(block));
   setupSharedEventListeners(block);
 }
 
+// Adds event listeners that are used only on desktop
 function setupDesktopEventListeners(block) {
+  // Change menu size on scroll
   document.addEventListener('scroll', () => toggleHasScrolled(block));
 
+  // open menu when user's mouse enters the sidebar
   block.querySelectorAll('.nav-sections, .nav-toolbar, .nav-hamburger').forEach((section) => {
     section.addEventListener('mouseenter', () => block.querySelector('nav').setAttribute('data-hovering', ''));
   });
+  // close menu when user's mouse enters invisible div over the content
   block.querySelector('.nav-close-background').addEventListener('mouseenter', () => {
     block.querySelector('nav').removeAttribute('data-hovering');
     closeAllExpandedTools(block);
+  });
+  // toggle sub-menus
+  block.querySelectorAll('.nav-sections > ul > li > ul').forEach((ul) => {
+    const parent = ul.parentElement;
+    parent.addEventListener('mouseenter', () => toggleSubmenu(parent));
+    parent.addEventListener('mouseleave', () => closeAllSubmenus(block));
   });
   setupSharedEventListeners(block);
 }
@@ -125,6 +152,7 @@ export default async function decorate(block) {
       item.parentElement.append(fragment('<span class="icon icon-chevron-down"></span>'));
     });
 
+    // Append nav to document
     const navWrapper = document.createElement('div');
     navWrapper.className = 'nav-wrapper';
     navWrapper.append(nav);
