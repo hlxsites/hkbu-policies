@@ -28,6 +28,17 @@ function setupMobileEventListeners(block) {
       .addEventListener('click', () => toggleSubmenu(parent));
   });
   block.querySelector('.nav-close-background').addEventListener('click', () => toggleMenu(block));
+  block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
+    tool.addEventListener('click', () => tool.toggleAttribute('expanded'));
+  });
+  block.querySelectorAll('.icon-font-size ~ .tool-dropdown-content > span').forEach((fontSizeButton, i) => {
+    const sizes = [9, 10, 11];
+    fontSizeButton.addEventListener('click', () => {
+      fontSizeButton.parentElement.querySelector('[aria-selected]').removeAttribute('aria-selected');
+      fontSizeButton.setAttribute('aria-selected', true);
+      document.querySelector('html').style.fontSize = `${sizes[i]}px`;
+    });
+  });
 }
 
 function setupDesktopEventListeners(block) {
@@ -67,8 +78,22 @@ export default async function decorate(block) {
       </div>
       <div class="nav-search"><span class="icon icon-search"></span></div>
       <div class="nav-toolbar">
-        <span class="icon icon-font-size"></span>
-        <span class="icon icon-language"></span>
+        <div class="tool-dropdown">
+            <span role="button" class="icon icon-font-size"></span>
+            <div class="tool-dropdown-content">
+                <span style="scale: 0.7" role="button" class="icon icon-font-size-single"></span>
+                <span aria-selected="true" role="button" class="icon icon-font-size-single"></span>
+                <span style="scale: 1.3" role="button" class="icon icon-font-size-single"></span>
+            </div>
+        </div>
+        <div class="tool-dropdown">
+            <span role="button" class="icon icon-language"></span>
+            <div class="tool-dropdown-content">
+                <span aria-selected="true" role="button" class="">EN</span>
+                <span role="button" class="">简</span>
+                <span role="button" class="">繁</span>
+            </div>
+        </div>
         <span class="icon icon-search"></span>
       </div>
     `));
@@ -89,10 +114,15 @@ export default async function decorate(block) {
     decorateIcons(block);
 
     // Add event listeners
-    const onMediaChange = () => (isDesktop.matches
-      ? setupDesktopEventListeners(block)
-      : setupMobileEventListeners(block));
-    isDesktop.addEventListener('change', onMediaChange);
-    onMediaChange();
+    if (isDesktop.matches) {
+      setupDesktopEventListeners(block);
+    } else {
+      setupMobileEventListeners(block);
+    }
   }
 }
+
+// Re-render block if switching between mobile and desktop
+isDesktop.addEventListener('change', () => {
+  decorate(document.querySelector('.block.header'));
+});

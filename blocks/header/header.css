@@ -30,6 +30,55 @@ nav .nav-toolbar {
   padding: 16px;
 }
 
+nav .nav-toolbar .tool-dropdown {
+  background: white;
+  position: relative;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  border-radius: 25px 25px 0 0;
+  cursor: pointer;
+}
+
+nav .nav-toolbar .tool-dropdown[expanded] {
+  border: 1px solid rgb(199 199 199 / 54.1%);
+}
+
+nav .nav-toolbar .tool-dropdown[expanded] > .icon {
+  background: var(--blue);
+  fill: white;
+  border-radius: 25px;
+}
+
+nav .nav-toolbar .tool-dropdown > .icon {
+  padding: 5px;
+}
+
+nav .nav-toolbar .tool-dropdown .tool-dropdown-content {
+  display: none;
+}
+
+nav .nav-toolbar .tool-dropdown[expanded] .tool-dropdown-content {
+  transform: translateX(-1px);
+  max-width: 38px;
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  top: 100%;
+  padding: 5px;
+  padding-bottom: 20px;
+  border: 1px solid rgb(199 199 199 / 54.1%);
+  border-radius: 0 0  25px 25px;
+  border-top: none;
+  z-index: 10;
+  background: white;
+}
+
+nav .nav-toolbar .tool-dropdown[expanded] .tool-dropdown-content > span[aria-selected] {
+  border-bottom: 3px solid var(--blue);
+}
+
 nav .nav-close-background {
   display: none;
 }
@@ -194,6 +243,7 @@ nav[aria-expanded] .nav-sections {
 
 nav[aria-expanded] .nav-toolbar {
   display: flex;
+  align-items: center;
 }
 
 nav[aria-expanded] .nav-logo {

@@ -16,7 +16,7 @@ main .section > div.hero-wrapper {
   left: 0;
   right: 0;
   background: rgb(42 101 253);
-  background: linear-gradient(270deg, rgb(42 101 253 / 100%) 0%, rgb(19 23 156 / 100%) 100%);
+  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
 }
 
 .hero.block {
