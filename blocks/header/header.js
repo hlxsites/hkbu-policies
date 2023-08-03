@@ -20,16 +20,22 @@ function toggleHasScrolled(block) {
   }
 }
 
-function setupMobileEventListeners(block) {
-  block.querySelector('.nav-hamburger').addEventListener('click', () => toggleMenu(block));
-  block.querySelectorAll('.nav-sections > ul > li > ul').forEach((ul) => {
-    const parent = ul.parentElement;
-    parent.querySelector(':scope > .icon-chevron-down')
-      .addEventListener('click', () => toggleSubmenu(parent));
+function closeAllExpandedTools(block) {
+  block.querySelectorAll('.nav-toolbar [expanded]').forEach((element) => {
+    element.removeAttribute('expanded');
   });
-  block.querySelector('.nav-close-background').addEventListener('click', () => toggleMenu(block));
+}
+
+function setupSharedEventListeners(block) {
   block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
-    tool.addEventListener('click', () => tool.toggleAttribute('expanded'));
+    tool.addEventListener('click', () => {
+      if (tool.hasAttribute('expanded')) {
+        closeAllExpandedTools(block);
+      } else {
+        closeAllExpandedTools(block);
+        tool.toggleAttribute('expanded');
+      }
+    });
   });
   block.querySelectorAll('.icon-font-size ~ .tool-dropdown-content > span').forEach((fontSizeButton, i) => {
     const sizes = [9, 10, 11];
@@ -41,6 +47,17 @@ function setupMobileEventListeners(block) {
   });
 }
 
+function setupMobileEventListeners(block) {
+  block.querySelector('.nav-hamburger').addEventListener('click', () => toggleMenu(block));
+  block.querySelectorAll('.nav-sections > ul > li > ul').forEach((ul) => {
+    const parent = ul.parentElement;
+    parent.querySelector(':scope > .icon-chevron-down')
+      .addEventListener('click', () => toggleSubmenu(parent));
+  });
+  block.querySelector('.nav-close-background').addEventListener('click', () => toggleMenu(block));
+  setupSharedEventListeners(block);
+}
+
 function setupDesktopEventListeners(block) {
   document.addEventListener('scroll', () => toggleHasScrolled(block));
 
@@ -49,7 +66,9 @@ function setupDesktopEventListeners(block) {
   });
   block.querySelector('.nav-close-background').addEventListener('mouseenter', () => {
     block.querySelector('nav').removeAttribute('data-hovering');
+    closeAllExpandedTools(block);
   });
+  setupSharedEventListeners(block);
 }
 
 export default async function decorate(block) {
