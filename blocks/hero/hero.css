@@ -24,13 +24,13 @@ main .section > div.hero-wrapper {
   background: transparent;
 }
 
-.hero.block > div:not(.hero-background) {
-  position: relative;
-}
-
 .hero.block > div > div {
   display: grid;
   grid-template: 'title' 'image';
+}
+
+.hero.block > div:not(.hero-background) {
+  position: relative;
 }
 
 .hero.block h1 {
