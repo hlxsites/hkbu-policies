@@ -35,11 +35,30 @@ function buildHeroBlock(main) {
 }
 
 /**
+ *
+ */
+function buildBreadcrumbs(main) {
+  const noBreadcrumbs = !!document.querySelector('meta[name="no-breadcrumbs"]');
+
+  if (noBreadcrumbs) {
+    main.classList.add('no-breadcrumbs');
+    return;
+  }
+
+  const titleElement = document.createElement('span');
+  titleElement.textContent = document.querySelector('title').textContent;
+
+  const firstSection = main.querySelector('div');
+  firstSection.prepend(buildBlock('breadcrumbs', { elems: [titleElement] }));
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbs(main);
     buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console

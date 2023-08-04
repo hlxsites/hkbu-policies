@@ -1,0 +1,24 @@
+.block.breadcrumbs {
+  font-size: 1.4rem;
+}
+
+.block.breadcrumbs > * {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.block.breadcrumbs:first-child > * {
+  padding-left: 0;
+}
+
+.block.breadcrumbs a:any-link {
+  color: #404851;
+}
+
+.block.breadcrumbs a:any-link:hover {
+  color: var(--link-hover-color);
+}
+
+.block.breadcrumbs .current-path {
+  color: var(--link-color);
+}
