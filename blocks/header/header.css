@@ -403,11 +403,16 @@ nav[aria-expanded] {
 @media (min-width: 1024px) {
   nav {
     position: fixed;
+    pointer-events: none;
     width: 100vw;
     height: 100vh;
     display: grid;
     grid-template: 'logo' auto 'sections' 1fr 'toolbar' auto;
     transition: 250ms;
+  }
+
+  nav > div {
+    pointer-events: all;
   }
 
   nav[aria-expanded] {

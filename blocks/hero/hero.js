@@ -5,7 +5,11 @@ export default function decorate(block) {
   background.classList.add('hero-background');
   block.append(background);
 
-  block.querySelector('img').classList.add('hero-image');
+  if (!block.querySelector('img')) {
+    block.classList.add('no-image');
+  }
+
+  block.querySelector('img')?.classList.add('hero-image');
 
   ['deco-bu', 'deco-bu-dark'].forEach((logoName) => {
     const buLogo = createOptimizedPicture(`/icons/${logoName}.png`);

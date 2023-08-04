@@ -21,9 +21,14 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
  */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
+  let picture = h1.previousElementSibling;
+
+  if (picture?.tagName !== 'P') {
+    picture = null;
+  }
+
   // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (h1) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);

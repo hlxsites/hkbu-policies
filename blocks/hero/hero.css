@@ -45,6 +45,11 @@ main .section > div.hero-wrapper {
   z-index: 1;
 }
 
+.hero.block.no-image h1 {
+  margin-bottom: 24px;
+  padding: 20px 0;
+}
+
 .hero.block > div > div .hero-image {
   margin-top: 5px;
   max-height: 250px;
@@ -67,6 +72,10 @@ main .section > div.hero-wrapper {
   z-index: 0;
 }
 
+.hero.block.no-image > div > div::after {
+  height: 24px;
+}
+
 .hero.block .bu-logo {
   position: absolute;
   bottom: 260px;
@@ -74,6 +83,17 @@ main .section > div.hero-wrapper {
   width: 120px;
   height: 80px;
   z-index: 0;
+}
+
+.hero.block.no-image .bu-logo {
+  bottom: unset;
+  top: calc(-1 * var(--nav-height));
+  width: auto;
+  height: 136px;
+}
+
+.hero.block.no-image .bu-logo > img {
+  height: 136px;
 }
 
 .hero.block .bu-logo.deco-bu-dark {
@@ -85,6 +105,10 @@ main .section > div.hero-wrapper {
     display: grid;
     grid-template: 'title image' / 4fr 6fr;
     position: relative;
+  }
+
+  .hero.block.no-image > div > div {
+    grid-template: 'title';
   }
 
   .hero.block > div > div::after {
@@ -104,21 +128,40 @@ main .section > div.hero-wrapper {
     font-size: 4.6rem;
   }
 
+  .hero.block.no-image h1 {
+    margin-top: 40px;
+  }
+
   .hero.block .bu-logo {
     bottom: 24px;
     right: 0;
     width: 60%;
   }
 
-  .hero.block .bu-logo.deco-bu-dark {
+  .hero.block.no-image .bu-logo {
+    bottom: 24px;
+    top: calc(-1 * var(--nav-height));
+    height: unset;
+  }
+
+  .hero.block.no-image .bu-logo > img {
+    height: 100%;
+  }
+
+  .hero.block:not(.no-image) .bu-logo.deco-bu-dark {
     grid-area: title;
     display: flex;
     width: 60%;
     height: unset;
   }
 
-  .hero.block .bu-logo.deco-bu {
+  .hero.block:not(.no-image) .bu-logo.deco-bu {
     display: none;
+  }
+
+  .hero.block.no-image .bu-logo.deco-bu {
+    display: flex;
+    justify-content: end;
   }
 }
 
