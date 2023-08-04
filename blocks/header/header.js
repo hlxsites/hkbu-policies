@@ -59,9 +59,20 @@ function setupSharedEventListeners(block) {
     });
   });
   // Add search overlay toggle
-  block.querySelectorAll('.icon-search').forEach((searchIcon) => {
+  block.querySelectorAll('.nav-search .icon-search, .nav-toolbar .icon-search').forEach((searchIcon) => {
     searchIcon.addEventListener('click', () => {
       block.querySelector('.nav-search-overlay').toggleAttribute('visible');
+    });
+  });
+  // Close search overlay
+  block.querySelector('.nav-search-overlay button[name="close"]').addEventListener('click', () => {
+    block.querySelector('.nav-search-overlay').toggleAttribute('visible');
+  });
+  // Search overlay suggestions
+  block.querySelectorAll('.nav-search-overlay .search-ideas ul li').forEach((li) => {
+    li.style.cursor = 'pointer';
+    li.addEventListener('click', () => {
+      block.querySelector('.nav-search-overlay input').value = li.textContent;
     });
   });
 }
@@ -122,6 +133,14 @@ export default async function decorate(block) {
     // Add different sections to nav
     nav.querySelector(':scope > div:first-child').className = 'nav-sections';
     nav.querySelector(':scope > div:nth-child(2)').className = 'nav-search-overlay';
+    nav.querySelector('.nav-search-overlay').innerHTML = `
+      <form class="input-wrapper" action="/search">
+        <input type="text" name="q" placeholder="What are you looking for?">
+        <button type="submit"><span class="icon icon-search"></span></button>
+      </form>
+      <div class="search-ideas">${nav.querySelector('.nav-search-overlay').innerHTML}</div>
+      <button name="close"><span class="icon icon-close"></span></button>
+    `;
     nav.prepend(fragment(`
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
