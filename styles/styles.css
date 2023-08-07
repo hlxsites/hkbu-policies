@@ -88,6 +88,10 @@ body {
   display: none;
 }
 
+body main {
+  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
+}
+
 body.appear {
   display: unset;
 }

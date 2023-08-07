@@ -8,16 +8,16 @@ main .section > div.hero-wrapper {
   max-width: unset;
 }
 
-.hero-background {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgb(42 101 253);
-  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
-}
+/*.hero-background {*/
+/*  position: absolute;*/
+/*  z-index: -1;*/
+/*  top: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  background: rgb(42 101 253);*/
+/*  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);*/
+/*}*/
 
 .hero.block {
   padding-top: var(--nav-height);
