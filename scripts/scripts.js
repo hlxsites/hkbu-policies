@@ -35,11 +35,35 @@ function buildHeroBlock(main) {
 }
 
 /**
+ *
+ */
+function buildBreadcrumbs(main) {
+  const noBreadcrumbs = !!document.querySelector('meta[name="no-breadcrumbs"]');
+
+  if (noBreadcrumbs) {
+    main.classList.add('no-breadcrumbs');
+    return;
+  }
+
+  const titleElement = document.createElement('span');
+  titleElement.textContent = document.querySelector('title').textContent;
+
+  const firstSection = main.querySelector('div');
+  const lastSection = main.querySelector('div:last-of-type');
+  firstSection.prepend(buildBlock('breadcrumbs', { elems: [titleElement.cloneNode(true)] }));
+
+  const lastBreadcrumb = buildBlock('breadcrumbs', { elems: [titleElement.cloneNode(true)] });
+  lastBreadcrumb.classList.add('with-button');
+  lastSection.append(lastBreadcrumb);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbs(main);
     buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console

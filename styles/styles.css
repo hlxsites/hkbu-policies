@@ -12,12 +12,12 @@
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #2a65fd;
+  --link-hover-color: #2a65fd;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --text-color: #404851;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -244,6 +244,10 @@ main img {
 main .section {
   padding: 64px 16px;
   background: white;
+}
+
+main:not(.no-breadcrumbs) .section:nth-child(2) {
+  padding-top: 0;
 }
 
 @media (min-width: 600px) {

@@ -1,0 +1,42 @@
+.block.breadcrumbs {
+  font-size: 1.4rem;
+}
+
+.block.breadcrumbs .breadcrumb-content > * {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.block.breadcrumbs .breadcrumb-content > *:first-child {
+  padding-left: 0;
+}
+
+.block.breadcrumbs a:any-link {
+  color: #404851;
+}
+
+.block.breadcrumbs a.button:any-link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 16px;
+  color: white;
+  background-color: var(--blue);
+  background-image: linear-gradient(to right, transparent 50%, #02912d 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.4s cubic-bezier(0.19, 1, 0.22, 1) 0.1s,color 0.5s ease 0s,background-color 0.5s ease,border 0.5s ease;
+  margin-bottom: 60px;
+}
+
+.block.breadcrumbs a.button:any-link:hover {
+  background-position: -100% 100%;
+  text-decoration: none;
+  color: white;
+}
+
+.block.breadcrumbs a:any-link:hover {
+  color: var(--link-hover-color);
+}
+
+.block.breadcrumbs .current-path {
+  color: var(--link-color);
+}
