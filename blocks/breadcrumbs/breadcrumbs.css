@@ -2,6 +2,15 @@
   font-size: 1.4rem;
 }
 
+.breadcrumbs-wrapper:first-child .block.breadcrumbs {
+  margin-bottom: 100px;
+  padding-top: 30px;
+}
+
+.breadcrumbs-wrapper:last-child .block.breadcrumbs {
+  margin-top: 150px;
+}
+
 .block.breadcrumbs .breadcrumb-content > * {
   padding-left: 10px;
   padding-right: 10px;

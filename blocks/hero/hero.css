@@ -16,6 +16,7 @@ main .section > div.hero-wrapper {
 .hero.block > div > div {
   display: grid;
   grid-template: 'title' 'image';
+  min-height: 50px;
 }
 
 .hero.block > div:not(.hero-background) {
