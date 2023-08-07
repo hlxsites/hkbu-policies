@@ -76,6 +76,7 @@
 
 html {
   font-size: 10px;
+  overflow-y: scroll;
 }
 
 body {
@@ -86,6 +87,10 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
+}
+
+body main {
+  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
 }
 
 body.appear {
