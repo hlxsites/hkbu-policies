@@ -49,7 +49,12 @@ function buildBreadcrumbs(main) {
   titleElement.textContent = document.querySelector('title').textContent;
 
   const firstSection = main.querySelector('div');
-  firstSection.prepend(buildBlock('breadcrumbs', { elems: [titleElement] }));
+  const lastSection = main.querySelector('div:last-of-type');
+  firstSection.prepend(buildBlock('breadcrumbs', { elems: [titleElement.cloneNode(true)] }));
+
+  const lastBreadcrumb = buildBlock('breadcrumbs', { elems: [titleElement.cloneNode(true)] });
+  lastBreadcrumb.classList.add('with-button');
+  lastSection.append(lastBreadcrumb);
 }
 
 /**
