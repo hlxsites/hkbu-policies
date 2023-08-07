@@ -255,6 +255,25 @@ main:not(.no-breadcrumbs) .section:nth-child(2) {
   padding-top: 0;
 }
 
+main ul.custom-list-icons {
+  padding-left: 10px;
+  list-style: none;
+}
+
+main ul.custom-list-icons li {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+main ul.custom-list-icons li .icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
 @media (min-width: 600px) {
   main .section {
     padding: 64px 32px;

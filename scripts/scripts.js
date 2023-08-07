@@ -72,6 +72,15 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateCustomUls(main) {
+  main.querySelectorAll('ul').forEach((ul) => {
+    const liWithIcon = ul.querySelector('li > .icon:first-child');
+    if (liWithIcon) {
+      ul.classList.add('custom-list-icons');
+    }
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -79,6 +88,7 @@ function buildAutoBlocks(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  decorateCustomUls(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);

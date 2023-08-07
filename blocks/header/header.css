@@ -643,7 +643,6 @@ nav[aria-expanded] {
 
   nav .nav-sections ul li[aria-expanded] {
     position: unset;
-
   }
 
   nav .nav-sections ul li[aria-expanded] ul {
