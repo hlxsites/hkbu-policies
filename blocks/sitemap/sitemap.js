@@ -3,7 +3,7 @@ import { decorateIcons } from '../../scripts/lib-franklin.js';
 
 export default async function decorate(block) {
   const endpoint = `/${getLanguage()}/query-index.json`;
-  const response = await fetch(endpoint)
+  const response = await fetch(endpoint);
   if (!response.ok) {
     throw new Error('Error fetching index');
   }
