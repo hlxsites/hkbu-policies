@@ -415,16 +415,6 @@ nav[aria-expanded] {
     pointer-events: all;
   }
 
-  nav[aria-expanded] {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template: 'logo' auto 'sections' 1fr 'toolbar' auto;
-    transition: 250ms;
-    right: unset;
-    background: none;
-  }
-
   nav .nav-hamburger {
     display: none;
   }
@@ -436,6 +426,7 @@ nav[aria-expanded] {
   nav .nav-sections {
     display: flex;
     width: var(--nav-width);
+    grid-area: sections;
   }
 
   nav .nav-toolbar {
@@ -453,7 +444,9 @@ nav[aria-expanded] {
 
   nav .nav-sections ul li {
     border: none !important;
+    padding: 15px 0 15px 32px;
   }
+
 
   nav .nav-sections ul li .icon-chevron-down {
     display: none !important;
@@ -479,6 +472,7 @@ nav[aria-expanded] {
 
   nav.has-scrolled .nav-sidebar-background {
     width: 60px;
+    border-right: 1px solid rgb(229 229 229);
   }
 
   nav.has-scrolled .nav-logo .icon.icon-logo-small {
@@ -526,6 +520,7 @@ nav[aria-expanded] {
 
   nav[data-hovering] .nav-sidebar-background {
     width: var(--nav-width);
+    border-right: none;
   }
 
   nav.has-scrolled[data-hovering] .nav-sidebar-background {
@@ -655,5 +650,29 @@ nav[aria-expanded] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  /* small hamburger */
+  /* stylelint-disable-next-line no-descending-specificity */
+  nav:not(.has-scrolled, [data-hovering]) .nav-hamburger {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(50% + 10px);
+  }
+
+  nav:not(.has-scrolled, [data-hovering]) .nav-hamburger .burger {
+    background: white;
+    width: 9px;
+  }
+
+  nav:not(.has-scrolled, [data-hovering]) .nav-hamburger .burger::after {
+    background: white;
+    width: 9px;
+  }
+
+  nav:not(.has-scrolled, [data-hovering]) .nav-hamburger .burger::before {
+    background: white;
+    width: 9px;
   }
 }

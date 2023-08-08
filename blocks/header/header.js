@@ -145,8 +145,10 @@ export default async function decorate(block) {
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
       <div class='nav-logo'>
-        <span class="icon icon-logo-white"></span>
-        <span class="icon icon-logo-small"></span>
+        <a href="/${getLanguage()}/">
+          <span class="icon icon-logo-white"></span>
+          <span class="icon icon-logo-small"></span>
+        </a>
       </div>
       <div class="nav-search"><span class="icon icon-search"></span></div>
       <div class="nav-toolbar">
