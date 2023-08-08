@@ -114,7 +114,7 @@ nav .nav-search-overlay input {
 nav .nav-search-overlay button[name="close"] {
   fill: white;
   align-self: center;
-  background: linear-gradient(140deg, #2c68fa 0%, #204cf6 80%, #204cf6 100%);
+  background: linear-gradient(140deg, #2a65fd 0%, #2a65fd 100%);
   box-shadow: 0 8px 14px rgb(0 0 0 / 20%);
   border-radius: 50%;
   padding: 0;
