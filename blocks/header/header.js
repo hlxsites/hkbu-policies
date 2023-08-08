@@ -145,7 +145,7 @@ export default async function decorate(block) {
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
       <div class='nav-logo'>
-        <a href="/${getLanguage()}/">
+        <a href="/${getLanguage()}/" aria-label="Link to home page">
           <span class="icon icon-logo-white"></span>
           <span class="icon icon-logo-small"></span>
         </a>
