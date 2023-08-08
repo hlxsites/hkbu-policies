@@ -10,6 +10,34 @@
  * governing permissions and limitations under the License.
  */
 
+@font-face {
+  font-family: 'Poppins Regular Fallback';
+  src: local(arial);
+  size-adjust: 108%;
+  ascent-override: 91%;
+  descent-override: 24%;
+  line-gap-override: 24%;
+}
+
+@font-face {
+  font-family: 'Poppins Light Fallback';
+  src: local(arial);
+  size-adjust: 108%;
+  ascent-override: 93%;
+  descent-override: 29%;
+  line-gap-override: 16%;
+}
+
+@font-face {
+  font-family: 'Poppins Bold Fallback';
+  src: local('arial black');
+  size-adjust: 91%;
+  ascent-override: 103%;
+  descent-override: 29%;
+  line-gap-override: 33%;
+}
+
+
  :root {
   /* colors */
   --link-color: #2a65fd;
@@ -41,8 +69,11 @@
   --dark: #343a40;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  --font-poppins-regular: 'Poppins Regular', 'Poppins Regular Fallback', sans-serif;
+  --font-poppins-bold: 'Poppins Bold', 'Poppins Bold Fallback', sans-serif;
+  --font-poppins-light: 'Poppins Light', 'Poppins Light Fallback', sans-serif;
+  --body-font-family: var(--font-poppins-regular);
+  --heading-font-family: var(--font-poppins-bold);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
@@ -100,7 +131,6 @@ body.appear {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
-  font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
@@ -159,7 +189,7 @@ a:hover {
 
 /* buttons */
 a.button:any-link, button {
-  font-family: var(--body-font-family);
+  font-family: var(--font-poppins-bold);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
@@ -167,7 +197,6 @@ a.button:any-link, button {
   padding: 5px 30px;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
   background-color: var(--link-color);
@@ -263,8 +292,9 @@ main ul.custom-list-icons {
 main ul.custom-list-icons li {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-family: var(--font-poppins-bold);
   margin-bottom: 30px;
+  font-size: 2rem;
 }
 
 main ul.custom-list-icons li .icon {

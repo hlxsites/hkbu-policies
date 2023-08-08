@@ -9,7 +9,7 @@ footer a:any-link {
 }
 
 footer a:any-link:hover {
-  font-weight: 600;
+  font-family: var(--font-poppins-bold);
   text-decoration: none;
 }
 

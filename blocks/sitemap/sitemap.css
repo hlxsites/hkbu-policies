@@ -22,7 +22,7 @@
 .sitemap ul li a:any-link {
   color: var(--text-color);
   margin-top: 25px;
-  font-weight: 600;
+  font-family: var(--font-poppins-bold);
   line-height: 1.2;
 }
 

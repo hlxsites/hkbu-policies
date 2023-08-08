@@ -12,7 +12,7 @@
 
 .search-results .no-results h2 {
   font-size: 3.4rem;
-  font-weight: 700;
+  font-family: var(--font-poppins-bold);
   margin: 10px;
 }
 
