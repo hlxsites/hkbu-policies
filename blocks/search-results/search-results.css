@@ -1,0 +1,99 @@
+.search-results {
+  min-height: 600px;
+  position: relative;
+}
+
+.search-results .no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.search-results .no-results h2 {
+  font-size: 3.4rem;
+  font-family: var(--font-poppins-bold);
+  margin: 10px;
+}
+
+.search-results .no-results p {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.search-results .input-wrapper input {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  background: #edf2f6;
+  padding: 18px 110px 18px 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 50px;
+  font-size: 1.8rem;
+  max-width: unset;
+}
+
+.search-results .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.search-results .input-wrapper button[type="submit"] {
+  position: absolute;
+  right: 40px;
+  height: 100%;
+  fill: #545556;
+  width: 30px;
+  padding: 0;
+  background: none;
+  margin: 0;
+}
+
+.search-results .showing-x {
+  position: absolute;
+  right: 0;
+  font-size: 1.8rem;
+}
+
+.search-results .results {
+  margin-top: 100px;
+}
+
+.search-results .results > div {
+  display: grid;
+  grid-template: 'icon title' 'icon description' / 30px auto;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.search-results .results > div .icon {
+  width: 30px;
+  height: 30px;
+  grid-area: icon;
+}
+
+.search-results .results > div h2 {
+  grid-area: title;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.search-results .results > div em {
+  font-style: normal;
+  color: var(--blue);
+}
+
+.search-results .results > div h2 a:any-link {
+  color: var(--text-color);
+}
+
+.search-results .results > div .description {
+  grid-area: description;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}

@@ -1,5 +1,5 @@
 import { decorateIcons, getMetadata } from '../../scripts/lib-franklin.js';
-import { fragment } from '../../scripts/scripts.js';
+import { fragment, getLanguage } from '../../scripts/scripts.js';
 
 const isDesktop = window.matchMedia('(min-width: 1024px)');
 
@@ -134,7 +134,7 @@ export default async function decorate(block) {
     nav.querySelector(':scope > div:first-child').className = 'nav-sections';
     nav.querySelector(':scope > div:nth-child(2)').className = 'nav-search-overlay';
     nav.querySelector('.nav-search-overlay').innerHTML = `
-      <form class="input-wrapper" action="/search">
+      <form class="input-wrapper" action="/${getLanguage()}/search-result">
         <input type="text" name="q" placeholder="What are you looking for?">
         <button type="submit"><span class="icon icon-search"></span></button>
       </form>
@@ -145,8 +145,10 @@ export default async function decorate(block) {
       <div class="nav-close-background"></div>
       <div class="nav-hamburger"><span class="burger"></span></div>
       <div class='nav-logo'>
-        <span class="icon icon-logo-white"></span>
-        <span class="icon icon-logo-small"></span>
+        <a href="/${getLanguage()}/">
+          <span class="icon icon-logo-white"></span>
+          <span class="icon icon-logo-small"></span>
+        </a>
       </div>
       <div class="nav-search"><span class="icon icon-search"></span></div>
       <div class="nav-toolbar">

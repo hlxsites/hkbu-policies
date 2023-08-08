@@ -21,18 +21,16 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
  */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
-  let picture = h1.previousElementSibling;
+  let picture = h1?.previousElementSibling;
 
   if (picture?.tagName !== 'P') {
     picture = null;
   }
 
   // eslint-disable-next-line no-bitwise
-  if (h1) {
-    const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
-    main.prepend(section);
-  }
+  const section = document.createElement('div');
+  section.append(buildBlock('hero', { elems: [picture, h1] }));
+  main.prepend(section);
 }
 
 /**
@@ -72,6 +70,15 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateCustomUls(main) {
+  main.querySelectorAll('ul').forEach((ul) => {
+    const liWithIcon = ul.querySelector('li > .icon:first-child');
+    if (liWithIcon) {
+      ul.classList.add('custom-list-icons');
+    }
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -79,6 +86,7 @@ function buildAutoBlocks(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  decorateCustomUls(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -120,6 +128,16 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
+}
+
+export function getLanguage(defaultLang = 'en') {
+  const lang = window.location.pathname.split('/')[1];
+
+  if (window.location.pathname.startsWith('/drafts')) {
+    return 'en';
+  }
+
+  return lang || defaultLang;
 }
 
 /**

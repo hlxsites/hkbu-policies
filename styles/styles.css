@@ -10,6 +10,61 @@
  * governing permissions and limitations under the License.
  */
 
+@font-face {
+  font-family: 'Poppins Regular Fallback';
+  src: local(arial);
+  size-adjust: 108%;
+  ascent-override: 91%;
+  descent-override: 24%;
+  line-gap-override: 24%;
+}
+
+@font-face {
+  font-family: 'Poppins Light Fallback';
+  src: local(arial);
+  size-adjust: 108%;
+  ascent-override: 93%;
+  descent-override: 29%;
+  line-gap-override: 16%;
+}
+
+@font-face {
+  font-family: 'Poppins Bold Fallback';
+  src: local('arial black');
+  size-adjust: 91%;
+  ascent-override: 103%;
+  descent-override: 29%;
+  line-gap-override: 33%;
+}
+
+/* for more performance, the following non-fallback font definitions can be moved to lazy-styles.css
+but as we still achieve 100LHS, we eager load fonts for now for a better UX */
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('/fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('/fonts/Poppins-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Poppins Light';
+  src: url('/fonts/Poppins-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
  :root {
   /* colors */
   --link-color: #2a65fd;
@@ -41,14 +96,17 @@
   --dark: #343a40;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  --font-poppins-regular: 'Poppins Regular', 'Poppins Regular Fallback', sans-serif;
+  --font-poppins-bold: 'Poppins Bold', 'Poppins Bold Fallback', sans-serif;
+  --font-poppins-light: 'Poppins Light', 'Poppins Light Fallback', sans-serif;
+  --body-font-family: var(--font-poppins-regular);
+  --heading-font-family: var(--font-poppins-bold);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
-  --body-font-size-m: 2.2rem;
-  --body-font-size-s: 1.8rem;
-  --body-font-size-xs: 1.6rem;
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.3rem;
 
   /* heading sizes */
   --heading-font-size-xxl: 4.8rem;
@@ -100,7 +158,6 @@ body.appear {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
-  font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
@@ -117,6 +174,11 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+body p {
+  line-height: 3.6rem;
+  text-align: justify;
 }
 
 hr {
@@ -159,7 +221,7 @@ a:hover {
 
 /* buttons */
 a.button:any-link, button {
-  font-family: var(--body-font-family);
+  font-family: var(--font-poppins-bold);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
@@ -167,7 +229,6 @@ a.button:any-link, button {
   padding: 5px 30px;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
   background-color: var(--link-color);
@@ -253,6 +314,26 @@ main .section {
 
 main:not(.no-breadcrumbs) .section:nth-child(2) {
   padding-top: 0;
+}
+
+main ul.custom-list-icons {
+  padding-left: 10px;
+  list-style: none;
+}
+
+main ul.custom-list-icons li {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-poppins-bold);
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+main ul.custom-list-icons li .icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  flex-shrink: 0;
 }
 
 @media (min-width: 600px) {
