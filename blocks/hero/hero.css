@@ -136,6 +136,8 @@ main .section > div.hero-wrapper {
 
   .hero.block.no-image .bu-logo > img {
     height: 100%;
+    max-width: unset;
+    max-height: 250px;
   }
 
   .hero.block:not(.no-image) .bu-logo.deco-bu-dark {
