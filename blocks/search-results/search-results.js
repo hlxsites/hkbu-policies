@@ -1,5 +1,5 @@
 import { getLanguage } from '../../scripts/scripts.js';
-import { createOptimizedPicture, decorateIcons } from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture, decorateIcons, sampleRUM } from '../../scripts/lib-franklin.js';
 
 function highlightText(text, positions, length) {
   const modifiedTextLength = '<em></em>'.length;
@@ -66,6 +66,9 @@ export default async function decorate(block) {
         ${results.map(((item) => renderSearchResult(item, searchTerm))).join('')}
       </div>
     `;
+    sampleRUM('search', { source: '.input-wrapper > input', target: searchTerm });
+  } else {
+    sampleRUM('nullsearch', { source: '.input-wrapper > input', target: searchTerm });
   }
 
   block.innerHTML = `
