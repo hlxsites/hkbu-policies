@@ -10,7 +10,7 @@ export default function decorate(block) {
   let button = '';
   if (block.classList.contains('with-button') && !noButton) {
     button = `
-      <a class="button primary" href="/${getLanguage()}/">
+      <a class="button primary" href="/${getLanguage()}/policies">
         < Back to the Policies page
       </a>
     `;
