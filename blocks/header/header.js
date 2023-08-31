@@ -164,8 +164,6 @@ export default async function decorate(block) {
             <span role="button" class="icon icon-language"></span>
             <div class="tool-dropdown-content lang-dropdown">
                 <span aria-selected="true" role="button" class="">EN</span>
-                <span role="button" class=""><a href="https://policies.hkbu.edu.hk/home-cn.html">简</a></span>
-                <span role="button" class=""><a href="https://policies.hkbu.edu.hk/home-cn.html">繁</a></span>
             </div>
         </div>
         <span class="icon icon-search"></span>
