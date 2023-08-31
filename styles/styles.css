@@ -119,6 +119,7 @@ but as we still achieve 100LHS, we eager load fonts for now for a better UX */
   /* nav height */
   --nav-height: 60px;
   --nav-width: 250px;
+  --footer-height: 187px;
 }
 
 @media (min-width: 900px) {
@@ -149,6 +150,13 @@ body {
 
 body main {
   background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
+  min-height: calc(100vh - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+}
+
+body main .section:last-child {
+  flex-grow: 1;
 }
 
 body.appear {
