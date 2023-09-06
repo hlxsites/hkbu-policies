@@ -344,13 +344,13 @@ main ul.custom-list-icons li .icon {
   flex-shrink: 0;
 }
 
+main .default-content-wrapper ol, main .default-content-wrapper ul {
+  line-height: 3rem;
+}
+
 main .default-content-wrapper ol > li > ul {
   list-style: disc;
   margin-top: 0;
-}
-
-main .default-content-wrapper ol, main .default-content-wrapper ul {
-  line-height: 3rem;
 }
 
 @media (min-width: 600px) {
