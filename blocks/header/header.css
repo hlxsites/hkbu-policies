@@ -146,6 +146,10 @@ nav .nav-logo .icon.icon-logo-small {
   display: none;
 }
 
+nav .nav-logo .icon.icon-logo-small svg {
+  width: auto;
+}
+
 nav .nav-logo .icon {
   height: 100%;
   width: auto;
