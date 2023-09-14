@@ -239,7 +239,6 @@ nav .nav-sections ul li:first-child {
   border-top: 1px solid rgb(229 229 229);
 }
 
-/* stylelint-disable-next-line no-descending-specificity  */
 nav .nav-sections ul li a:any-link {
   color: black;
   font-size: 2rem;
@@ -697,7 +696,6 @@ nav[aria-expanded] {
   }
 
   /* small hamburger */
-  /* stylelint-disable-next-line no-descending-specificity */
   nav:not(.has-scrolled, [data-hovering]) .nav-hamburger {
     display: block;
     position: absolute;
