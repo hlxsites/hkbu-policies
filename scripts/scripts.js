@@ -79,7 +79,7 @@ function decorateCustomUls(main) {
   });
 }
 
-function openExternalLinksInNewTab(main) {
+export function openExternalLinksInNewTab(main) {
   main.querySelectorAll('a').forEach((anchor) => {
     const isExternalLink = new URL(anchor.href).hostname !== window.location.hostname;
     const markedAsNewTab = anchor.textContent.endsWith('[new-tab]');

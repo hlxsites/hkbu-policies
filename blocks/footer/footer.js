@@ -1,4 +1,5 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
+import { openExternalLinksInNewTab } from '../../scripts/scripts.js';
 
 /**
  * loads and decorates the footer
@@ -25,6 +26,7 @@ export default async function decorate(block) {
     });
 
     decorateIcons(footer);
+    openExternalLinksInNewTab(footer);
     block.append(footer);
   }
 }
