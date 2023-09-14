@@ -149,10 +149,13 @@ body {
 }
 
 body main {
-  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
   min-height: calc(100vh - var(--footer-height));
   display: flex;
   flex-direction: column;
+}
+
+body main.blue-background {
+  background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
 }
 
 body.appear {
