@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 nav {
   position: absolute;
   height: var(--nav-height);
@@ -8,6 +10,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+nav .scale-07 svg {
+  scale: 0.7;
+}
+
+nav .scale-13 svg {
+  scale: 1.3;
 }
 
 nav .icon.icon-search {
@@ -161,7 +171,6 @@ nav .nav-search .icon {
   padding-right: 5px;
 }
 
-/* stylelint-disable-next-line no-descending-specificity  */
 nav .nav-sections ul {
   padding: 0;
   width: 100%;
@@ -175,6 +184,26 @@ nav .nav-toolbar .icon:hover {
   background: var(--blue);
   fill: white;
   border-radius: 25px;
+}
+
+nav .nav-toolbar .tool-dropdown-content span {
+  position: relative;
+}
+
+nav .nav-toolbar .tool-dropdown-content .icon:hover {
+  background: none;
+  fill: black;
+  border-radius: unset;
+}
+
+nav .nav-toolbar .tool-dropdown-content .icon:hover::after {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background: var(--link-color);
+  position: absolute;
+  display: block;
+  bottom: 3px;
 }
 
 nav .nav-sections a:any-link {
@@ -347,10 +376,18 @@ nav .nav-toolbar .tool-dropdown[expanded] .tool-dropdown-content {
   border-top: none;
   z-index: 10;
   background: white;
+  align-items: center;
 }
 
-nav .nav-toolbar .tool-dropdown[expanded] .tool-dropdown-content > span[aria-selected] {
-  border-bottom: 3px solid var(--blue);
+nav .nav-toolbar .tool-dropdown[expanded] .tool-dropdown-content > span[aria-selected]::after {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background: var(--link-color);
+  position: absolute;
+  display: block;
+  bottom: 3px;
+  border-radius: 4px;
 }
 
 nav[aria-expanded] .nav-close-background {

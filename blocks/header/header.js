@@ -38,17 +38,6 @@ function closeAllExpandedTools(block) {
 
 // Adds event listeners that are shared between mobile and desktop
 function setupSharedEventListeners(block) {
-  // Open/close language selector and font size tool
-  block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
-    tool.addEventListener('click', () => {
-      if (tool.hasAttribute('expanded')) {
-        closeAllExpandedTools(block);
-      } else {
-        closeAllExpandedTools(block);
-        tool.toggleAttribute('expanded');
-      }
-    });
-  });
   // Implements font size tool
   block.querySelectorAll('.icon-font-size ~ .tool-dropdown-content > span').forEach((fontSizeButton, i) => {
     const sizes = [9, 10, 11];
@@ -89,6 +78,17 @@ function setupMobileEventListeners(block) {
     parent.querySelector(':scope > .icon-chevron-down')
       .addEventListener('click', () => toggleSubmenu(parent));
   });
+  // Open/close language selector and font size tool
+  block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
+    tool.addEventListener('click', () => {
+      if (tool.hasAttribute('expanded')) {
+        closeAllExpandedTools(block);
+      } else {
+        closeAllExpandedTools(block);
+        tool.toggleAttribute('expanded');
+      }
+    });
+  });
   setupSharedEventListeners(block);
 }
 
@@ -111,6 +111,16 @@ function setupDesktopEventListeners(block) {
     const parent = ul.parentElement;
     parent.addEventListener('mouseenter', () => toggleSubmenu(parent));
     parent.addEventListener('mouseleave', () => closeAllSubmenus(block));
+  });
+  // Open/close language selector and font size tool
+  block.querySelectorAll('.nav-toolbar .tool-dropdown').forEach((tool) => {
+    tool.addEventListener('mouseenter', () => {
+      closeAllExpandedTools(block);
+      tool.toggleAttribute('expanded');
+    });
+    tool.addEventListener('mouseleave', () => {
+      closeAllExpandedTools(block);
+    });
   });
   setupSharedEventListeners(block);
 }
@@ -155,15 +165,9 @@ export default async function decorate(block) {
         <div class="tool-dropdown">
             <span role="button" class="icon icon-font-size"></span>
             <div class="tool-dropdown-content">
-                <span style="scale: 0.7" role="button" class="icon icon-font-size-single"></span>
+                <span role="button" class="icon icon-font-size-single scale-07"></span>
                 <span aria-selected="true" role="button" class="icon icon-font-size-single"></span>
-                <span style="scale: 1.3" role="button" class="icon icon-font-size-single"></span>
-            </div>
-        </div>
-        <div class="tool-dropdown">
-            <span role="button" class="icon icon-language"></span>
-            <div class="tool-dropdown-content lang-dropdown">
-                <span aria-selected="true" role="button" class="">EN</span>
+                <span role="button" class="icon icon-font-size-single scale-13"></span>
             </div>
         </div>
         <span class="icon icon-search"></span>
