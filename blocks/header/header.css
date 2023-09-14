@@ -231,7 +231,6 @@ nav .nav-sections ul li > .icon-chevron-down {
   fill: #333;
 }
 
-/* stylelint-disable-next-line no-descending-specificity  */
 nav .nav-sections ul li > ul {
   display: none;
 }
