@@ -25,6 +25,9 @@ export default async function decorate(block) {
       div.classList.add(footerSections[i]);
     });
 
+    footer.querySelector('a[href="https://www.hkbu.edu.hk/"]')
+      ?.setAttribute('aria-label', 'Link to home page');
+
     decorateIcons(footer);
     openExternalLinksInNewTab(footer);
     block.append(footer);
