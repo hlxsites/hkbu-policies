@@ -79,6 +79,21 @@ function decorateCustomUls(main) {
   });
 }
 
+export function openExternalLinksInNewTab(main) {
+  main.querySelectorAll('a').forEach((anchor) => {
+    const isExternalLink = new URL(anchor.href).hostname !== window.location.hostname;
+    const markedAsNewTab = anchor.textContent.endsWith('[new-tab]');
+
+    if (isExternalLink || markedAsNewTab) {
+      anchor.target = '__blank';
+    }
+
+    if (markedAsNewTab) {
+      anchor.textContent = anchor.textContent.substring(0, anchor.textContent.search(/\[new-tab\]/));
+    }
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -87,6 +102,7 @@ function decorateCustomUls(main) {
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateCustomUls(main);
+  openExternalLinksInNewTab(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -123,6 +139,8 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+
+  document.querySelector('main').classList.add('blue-background');
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   sampleRUM('lazy');

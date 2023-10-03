@@ -7,16 +7,13 @@
   flex-direction: column;
 }
 
-.sitemap ul li {
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 8px;
-}
-
 .sitemap ul li a {
   display: flex;
   width: 100%;
   justify-content: space-between;
   box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 8px;
 }
 
 .sitemap ul li a:any-link {
@@ -40,6 +37,17 @@
 
 .sitemap ul li a:hover .icon.icon-site-navigation {
   display: none;
+}
+
+.sitemap ul li > ul {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.sitemap ul li > ul li a:any-link {
+  font-size: 1.6rem;
+  font-family: var(--font-poppins-regular);
+  color: var(--link-color);
 }
 
 .sitemap ul li a:any-link:hover {

@@ -1,4 +1,4 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons, getMetadata } from '../../scripts/lib-franklin.js';
 import { getLanguage } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
@@ -10,16 +10,18 @@ export default function decorate(block) {
   let button = '';
   if (block.classList.contains('with-button') && !noButton) {
     button = `
-      <a class="button primary" href="/${getLanguage()}/">
+      <a class="button primary" href="/${getLanguage()}/policies">
         < Back to the Policies page
       </a>
     `;
   }
 
+  const isRootPage = (getMetadata('root-page') ?? 'false') === 'true';
+
   block.innerHTML = `
     ${button}
     <div class="breadcrumb-content">
-      <a href="/${getLanguage()}/">Home</a> / ${currentPathEl.outerHTML}
+      <a href="/${getLanguage()}/">Home</a> ${isRootPage ? '' : `/ <a href="/${getLanguage()}/policies">Policies</a>`} / ${currentPathEl.outerHTML}
     </div>
   `;
 

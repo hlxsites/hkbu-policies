@@ -119,6 +119,7 @@ but as we still achieve 100LHS, we eager load fonts for now for a better UX */
   /* nav height */
   --nav-height: 60px;
   --nav-width: 250px;
+  --footer-height: 187px;
 }
 
 @media (min-width: 900px) {
@@ -148,6 +149,12 @@ body {
 }
 
 body main {
+  min-height: calc(100vh - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+}
+
+body main.blue-background {
   background: linear-gradient(270deg, #2a65fd 0%, #0c0080 100%);
 }
 
@@ -312,6 +319,10 @@ main .section {
   background: white;
 }
 
+body main .section:last-child {
+  flex-grow: 1;
+}
+
 main:not(.no-breadcrumbs) .section:nth-child(2) {
   padding-top: 0;
 }
@@ -334,6 +345,15 @@ main ul.custom-list-icons li .icon {
   height: 50px;
   margin-right: 20px;
   flex-shrink: 0;
+}
+
+main .default-content-wrapper ol, main .default-content-wrapper ul {
+  line-height: 3rem;
+}
+
+main .default-content-wrapper ol > li > ul {
+  list-style: disc;
+  margin-top: 0;
 }
 
 @media (min-width: 600px) {
